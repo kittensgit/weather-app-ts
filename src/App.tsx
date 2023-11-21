@@ -8,22 +8,34 @@ import { IForecast } from './types/types';
 
 const App = () => {
     const [forecast, setForecast] = useState<IForecast | null>(null);
+    const [cityName, setCityName] = useState<string>('');
 
     useEffect(() => {
         fetchForecast();
-    }, []);
+    }, [cityName]);
 
     const fetchForecast = async () => {
-        const response = await axios.get<IForecast>(
-            `https://api.openweathermap.org/data/2.5/weather?q=dnipro&units=metric&appid=cbf7feaaafe60e2be6038d48a828d9c9`
-        );
-        setForecast(response.data);
+        if (cityName) {
+            try {
+                const response = await axios.get<IForecast>(
+                    `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=cbf7feaaafe60e2be6038d48a828d9c9`
+                );
+                setForecast(response.data);
+            } catch (error) {
+                console.warn(error);
+                alert("location isn't found");
+            }
+        }
+    };
+
+    const handleCityName = (city: string) => {
+        setCityName(city);
     };
 
     return (
         <div className="container">
             <div className="wrap">
-                <SearchForm />
+                <SearchForm handleCityName={handleCityName} />
                 {forecast ? (
                     <Card
                         name={forecast.name}
