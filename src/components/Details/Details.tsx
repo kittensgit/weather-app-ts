@@ -1,34 +1,48 @@
 import React, { FC } from 'react';
 import './Details.scss';
 
-const Details: FC = ({}) => {
+interface DetailsProps {
+    feels_like: number;
+    wind: number;
+    humidity: number;
+    visibility: number;
+    pressure: number;
+}
+
+const Details: FC<DetailsProps> = ({
+    feels_like,
+    humidity,
+    pressure,
+    visibility,
+    wind,
+}) => {
     return (
         <div className="details">
             <h1 className="details__title">Weather details</h1>
             <div className="details__content">
                 <div className="details__content-item">
                     <p className="details__item-title">Feels like</p>
-                    <p>57</p>
+                    <p>{Math.floor(feels_like)}</p>
                 </div>
                 <div className="details__content-item">
                     <p className="details__item-title">ENE wind</p>
-                    <p>13 mi/h</p>
+                    <p>{wind} km/h</p>
                 </div>
                 <div className="details__content-item">
                     <p className="details__item-title">Humidity</p>
-                    <p>82%</p>
+                    <p>{humidity}%</p>
                 </div>
                 <div className="details__content-item">
                     <p className="details__item-title">UV</p>
                     <p>0</p>
                 </div>
                 <div className="details__content-item">
-                    <p className="details__item-title">Visibiliyt</p>
-                    <p>7 mi</p>
+                    <p className="details__item-title">Visibility</p>
+                    <p>{visibility} m</p>
                 </div>
                 <div className="details__content-item">
                     <p className="details__item-title">Pressure</p>
-                    <p>1022 hPa</p>
+                    <p>{pressure} hPa</p>
                 </div>
             </div>
         </div>

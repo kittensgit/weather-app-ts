@@ -36,7 +36,17 @@ const App = () => {
                     <div>Enter location</div>
                 )}
             </div>
-            {forecast ? <Details /> : <></>}
+            {forecast ? (
+                <Details
+                    feels_like={forecast.main.feels_like}
+                    humidity={forecast.main.humidity}
+                    pressure={forecast.main.pressure}
+                    visibility={forecast.visibility}
+                    wind={forecast.wind.speed}
+                />
+            ) : (
+                <></>
+            )}
         </div>
     );
 };
