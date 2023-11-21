@@ -7,12 +7,26 @@ interface CardProps {
     max_temp: number;
     min_temp: number;
     weather: string;
+    feels_like: number;
 }
 
-const Card: FC<CardProps> = ({ name, max_temp, min_temp, temp, weather }) => {
+const Card: FC<CardProps> = ({
+    name,
+    max_temp,
+    min_temp,
+    temp,
+    weather,
+    feels_like,
+}) => {
     const capitalizeFirstLetter = (str: string) => {
         return str.charAt(0).toUpperCase() + str.slice(1);
     };
+
+    const date = new Date();
+    const options: Intl.DateTimeFormatOptions = {
+        weekday: 'short',
+    };
+    const currentWeekDay = date.toLocaleDateString('en-US', options);
 
     return (
         <div className="card">
@@ -26,12 +40,14 @@ const Card: FC<CardProps> = ({ name, max_temp, min_temp, temp, weather }) => {
                 </div>
                 <div className="card__details">
                     <div className="card__details-top">
-                        <p className="card__day">Sun</p>
+                        <p className="card__day">{currentWeekDay}</p>
                         <p className="card__temp"> {Math.floor(max_temp)}°</p>
                         <p className="card__feel"> {Math.floor(min_temp)}°</p>
                     </div>
                     <div className="card__details-bottom">
-                        <p className="quality">Air quality: 20 - Good</p>
+                        <p className="feels">
+                            Feels like: {Math.floor(feels_like)}°
+                        </p>
                     </div>
                 </div>
             </div>

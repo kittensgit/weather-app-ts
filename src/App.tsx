@@ -43,6 +43,7 @@ const App = () => {
                         weather={forecast.weather[0].description}
                         max_temp={forecast.main.temp_max}
                         min_temp={forecast.main.temp_min}
+                        feels_like={forecast.main.feels_like}
                     />
                 ) : (
                     <div>Enter location</div>
@@ -55,6 +56,7 @@ const App = () => {
                     pressure={forecast.main.pressure}
                     visibility={forecast.visibility}
                     wind={forecast.wind.speed}
+                    sea={forecast.main.sea_level}
                 />
             ) : (
                 <></>

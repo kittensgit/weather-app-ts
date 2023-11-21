@@ -13,6 +13,7 @@ export interface IForecast {
         pressure: number;
         temp_max: number;
         temp_min: number;
+        sea_level: number;
     };
     wind: {
         speed: number;

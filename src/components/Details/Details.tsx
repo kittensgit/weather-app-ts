@@ -7,6 +7,7 @@ interface DetailsProps {
     humidity: number;
     visibility: number;
     pressure: number;
+    sea: number;
 }
 
 const Details: FC<DetailsProps> = ({
@@ -14,6 +15,7 @@ const Details: FC<DetailsProps> = ({
     humidity,
     pressure,
     visibility,
+    sea,
     wind,
 }) => {
     return (
@@ -33,8 +35,8 @@ const Details: FC<DetailsProps> = ({
                     <p>{humidity}%</p>
                 </div>
                 <div className="details__content-item">
-                    <p className="details__item-title">UV</p>
-                    <p>0</p>
+                    <p className="details__item-title">Sea level</p>
+                    <p>{sea ? sea : '-'}</p>
                 </div>
                 <div className="details__content-item">
                     <p className="details__item-title">Visibility</p>
