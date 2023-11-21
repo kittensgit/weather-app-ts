@@ -1,0 +1,47 @@
+$gray: #7d7878;
+$accent: #ffa34e;
+
+.card {
+    display: flex;
+    max-width: 1090px;
+    flex-direction: column;
+    border-radius: 10px;
+    border: 1px solid $gray;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 20px 0px $gray;
+    padding: 52px 64px 51px 68px;
+
+    &__title {
+        font-size: 35px;
+        font-weight: 600;
+    }
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 26px;
+    }
+    &__overcast {
+        display: flex;
+        align-items: baseline;
+        font-size: 25px;
+        font-weight: 500;
+
+        &--accent {
+            font-size: 80px;
+            font-weight: 700;
+            color: $accent;
+            margin-right: 13px;
+        }
+    }
+    &__details {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 23px;
+
+        &-top {
+            display: flex;
+            gap: 10px;
+        }
+    }
+}
