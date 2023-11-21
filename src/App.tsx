@@ -24,9 +24,19 @@ const App = () => {
         <div className="container">
             <div className="wrap">
                 <SearchForm />
-                <Card />
+                {forecast ? (
+                    <Card
+                        name={forecast.name}
+                        temp={forecast.main.temp}
+                        weather={forecast.weather[0].description}
+                        max_temp={forecast.main.temp_max}
+                        min_temp={forecast.main.temp_min}
+                    />
+                ) : (
+                    <div>Enter location</div>
+                )}
             </div>
-            <Details />
+            {forecast ? <Details /> : <></>}
         </div>
     );
 };
