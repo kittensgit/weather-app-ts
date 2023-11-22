@@ -27,8 +27,8 @@ const Details: FC<DetailsProps> = ({
                     <p>{Math.floor(feels_like)}</p>
                 </div>
                 <div className="details__content-item">
-                    <p className="details__item-title">ENE wind</p>
-                    <p>{wind} km/h</p>
+                    <p className="details__item-title">Wind</p>
+                    <p>{wind} m/h</p>
                 </div>
                 <div className="details__content-item">
                     <p className="details__item-title">Humidity</p>

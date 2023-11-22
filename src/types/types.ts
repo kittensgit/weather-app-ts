@@ -3,6 +3,7 @@ export interface IForecast {
     weather: [
         {
             description: string;
+            main: string;
         }
     ];
     visibility: number;

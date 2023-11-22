@@ -32,11 +32,33 @@ const App = () => {
         setCityName(city);
     };
 
+    const handleBgImage = (weather: IForecast['weather']) => {
+        switch (weather[0].main) {
+            case 'Clouds':
+                return 'bg-clouds';
+            case 'Thunderstorm':
+                return 'bg-thunder';
+            case 'Rain':
+                return 'bg-rain';
+            case 'Clear':
+                return 'bg-sun';
+            case 'Snow':
+                return 'bg-snow';
+            default:
+                return 'bg-clouds';
+        }
+    };
+
     return (
-        <div className="container">
-            <div className="wrap">
-                <SearchForm handleCityName={handleCityName} />
-                {forecast ? (
+        <div
+            className={`${
+                forecast ? handleBgImage(forecast.weather) : 'base-bg'
+            } 
+            container`}
+        >
+            <SearchForm handleCityName={handleCityName} />
+            {forecast ? (
+                <>
                     <Card
                         name={forecast.name}
                         temp={forecast.main.temp}
@@ -45,21 +67,17 @@ const App = () => {
                         min_temp={forecast.main.temp_min}
                         feels_like={forecast.main.feels_like}
                     />
-                ) : (
-                    <div>Enter location</div>
-                )}
-            </div>
-            {forecast ? (
-                <Details
-                    feels_like={forecast.main.feels_like}
-                    humidity={forecast.main.humidity}
-                    pressure={forecast.main.pressure}
-                    visibility={forecast.visibility}
-                    wind={forecast.wind.speed}
-                    sea={forecast.main.sea_level}
-                />
+                    <Details
+                        feels_like={forecast.main.feels_like}
+                        humidity={forecast.main.humidity}
+                        pressure={forecast.main.pressure}
+                        visibility={forecast.visibility}
+                        wind={forecast.wind.speed}
+                        sea={forecast.main.sea_level}
+                    />
+                </>
             ) : (
-                <></>
+                <div>Enter location</div>
             )}
         </div>
     );

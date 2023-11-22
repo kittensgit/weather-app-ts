@@ -109,6 +109,14 @@ legend {
     display: block;
 }
 
+//mixins
+
+@mixin bg {
+    background-size: cover;
+    height: 100%;
+    margin: 0;
+}
+
 // base styles
 
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500;600;700&display=swap');
@@ -117,10 +125,13 @@ body {
     font-family: 'Work Sans', sans-serif;
     color: white;
     font-size: 18px;
-    background: url('./images/bg.jpg') no-repeat;
-    background-size: cover;
-    height: 100%;
-    margin: 0;
+}
+
+.container {
+    padding: 25px 50px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &::before {
         content: '';
@@ -134,11 +145,31 @@ body {
     }
 }
 
-.container {
-    padding: 25px 50px 50px;
+.base-bg {
+    background: url('./images/clouds.jpg') no-repeat;
+    @include bg;
+    height: 100vh;
 }
 
-.wrap {
-    display: flex;
-    flex-direction: column;
+.bg-clouds {
+    background: url('./images/clouds.jpg') no-repeat;
+    @include bg;
+}
+
+.bg-thunder {
+    background: url('./images/thunder.jfif') no-repeat;
+    @include bg;
+}
+.bg-rain {
+    background: url('./images/rain.jpg') no-repeat;
+    @include bg;
+}
+
+.bg-sun {
+    background: url('./images/sun.jpg') no-repeat;
+    @include bg;
+}
+.bg-snow {
+    background: url('./images/snow.jpg') no-repeat;
+    @include bg;
 }
