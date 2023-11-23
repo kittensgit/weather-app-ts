@@ -38,7 +38,7 @@ const App = () => {
                 return 'bg-clouds';
             case 'Thunderstorm':
                 return 'bg-thunder';
-            case 'Rain':
+            case 'Rain' && 'Drizzle':
                 return 'bg-rain';
             case 'Clear':
                 return 'bg-sun';
